@@ -27,13 +27,11 @@ class MyApp extends StatelessWidget {
 
 class MyAppState extends ChangeNotifier {
   var current = WordPair.random();
-
   void getNext() {
     current = WordPair.random();
     notifyListeners();
   }
-
-  var favorites = <WordPair>[];
+    var favorites = <WordPair>[];
 
   void toggleFavorite() {
     if (favorites.contains(current)) {
@@ -73,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             SafeArea(
               child: NavigationRail(
-                extended: constraints.maxWidth >= 600,
+                extended: constraints.maxWidth >= 600,  // ← Here.
                 destinations: [
                   NavigationRailDestination(
                     icon: Icon(Icons.home),
@@ -149,6 +147,8 @@ class GeneratorPage extends StatelessWidget {
   }
 }
 
+// ...
+
 class BigCard extends StatelessWidget {
   const BigCard({
     super.key,
@@ -163,9 +163,8 @@ class BigCard extends StatelessWidget {
     final style = theme.textTheme.displayMedium!.copyWith(
       color: theme.colorScheme.onPrimary,
     );
-
     return Card(
-      color: theme.colorScheme.primary,
+      color: theme.colorScheme.primary, 
       child: Padding(
         padding: const EdgeInsets.all(20),
         child: Text(
